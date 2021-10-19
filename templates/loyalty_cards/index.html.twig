@@ -1,0 +1,86 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_lc_index'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_lc_index'|trans }}</span>
+    <span class="desc">{{ 'admin_lc_desc'|trans }}</span>
+{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+<!-- Action Button -->
+<div id="actions">
+    <div class="btn-group">
+        <button class="btn btn-success" data-toggle="modal" data-target="#searchFilter" data-tooltip title="{{ 'search_filter'|trans }}"><i class="material-icons">search</i></button>
+    </div>
+
+
+
+</div>
+
+<!-- Search Filter Form -->
+<div id="searchFilter" class="modal fade" tabindex="-1">
+    <form action="{{ path('admin_loyalty_cards_index') }}" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h4><i class="material-icons">search</i>{{ 'search_filter_title'|trans }}</h4></div>
+            <div class="modal-body">                    {{ form_widget(filterForm) }}                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                <button type="submit" class="btn btn-success">{{ 'search_filter'|trans }}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Table List -->
+<form id="pageForm" action="#" method="post">
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="check">#</th>
+                <th class="wid-25">{{ 'customer_name'|trans }}</th>
+                <th class="wid-25">{{ 'Card_code'|trans }}</th>
+
+                <th class="wid-25">{{ 'Date_of_issue'|trans }}</th>
+
+                <th class="wid-15">{{ 'Loyalty_points'|trans }}</th>
+                <th class="wid-15">Status</th>
+                <th class="process"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loyalty_card in loyalty_cards %}
+            <tr>
+                <td class="check"><span class="badge rounded-circle {{ loyalty_card.s_is_valid ? 'badge-danger' : (loyalty_card.s_is_valid ? 'badge-success' : 'badge-warning') }}" >&nbsp;&nbsp;&nbsp;</span></td>
+
+                <td class="wid-25">{{ loyalty_card.c_firstName ~' '~ loyalty_card.c_lastName }}</td>
+                <td class="wid-25">{{ loyalty_card.s_card_code }}</td>
+
+                <td class="wid-25">{{ loyalty_card.s_date_of_issue ? loyalty_card.s_date_of_issue|date('Y-m-d H:i:s') : '' }}</td>
+
+                <td class="wid-20">{{ loyalty_card.s_loyalty_points }}</td>
+                <td class="wid-20">{{ loyalty_card.s_status }}</td>
+                <td class="process">
+                    <div class="floating-menu">
+                        <a><i class="material-icons">more_horiz</i></a>
+                        {{ pd_menu_render('App\\Menu\\Action\\Loyaltycard', {'loyaltycard': loyalty_card}) }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</form>
+
+    {{ knp_pagination_render(loyalty_cards) }}
+{% endblock %}

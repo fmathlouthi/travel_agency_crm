@@ -1,0 +1,112 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_ContactService_index'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_ContactService_index'|trans }}</span>
+    <span class="desc">{{ 'admin_ContactService_desc'|trans }}</span>
+{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+<!-- Action Button -->
+<div id="actions">
+    <div class="btn-group">
+        <button class="btn btn-success" data-toggle="modal" data-target="#searchFilter" data-tooltip title="{{ 'search_filter'|trans }}"><i class="material-icons">search</i></button>
+    </div>
+    <div class="btn-group">
+        <a href="{{ path('admin_contact_service_new') }}" class="btn btn-success" title="ADD clients service" > <i class="material-icons">add</i></a>
+
+
+    </div>
+    {% if is_granted('ROLE_CONTACTSERVICE_CREATEPROMO') %}
+    <div class="btn-group">
+
+        <div class="btn-group">
+            <button class="btn btn-success" data-toggle="modal" data-target="#promoForm" data-tooltip title="create campain emailing"> <i class="material-icons">contact_mail</i> </button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</div>
+
+    <!-- Search Filter Form -->
+    <div id="searchFilter" class="modal fade" tabindex="-1">
+        <form action="{{ path('admin_contact_service_index') }}" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><h4><i class="material-icons">search</i>{{ 'search_filter_title'|trans }}</h4></div>
+                <div class="modal-body">                    {{ form_widget(filterForm) }}                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                    <button type="submit" class="btn btn-success">{{ 'search_filter'|trans }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="promoForm" class="modal fade" tabindex="-1">
+        <form action="{{ path('admin_contact_service_index') }}" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><h4><i class="material-icons">alternate_email</i>create campain </h4></div>
+                <div class="modal-body">                    {{ form_widget(promoForm) }}                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                    <button type="submit" class="btn btn-success">{{ 'start_campain'|trans }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+<!-- Table List -->
+<form id="pageForm" action="#" method="post">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+
+                <th class="wid-25">{{ knp_pagination_sortable(contact_services, 'SalutationName'|trans, 'c.salutationName') }}</th>
+                <th class="wid-25">{{ knp_pagination_sortable(contact_services, 'Name'|trans, 'c.firstName') }}</th>
+                <th class="wid-25">{{ knp_pagination_sortable(contact_services, 'Email'|trans, 's.serviceName') }}</th>
+                <th class="wid-25">{{ knp_pagination_sortable(contact_services, 'Service'|trans, 's.serviceName') }}</th>
+
+                <th class="wid-25">{{ knp_pagination_sortable(contact_services, 'Score'|trans, 'cs.sccore') }}</th>
+
+                <th class="process"></th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            {% for contact_service in contact_services %}
+                <tr>
+
+
+                    <td class="wid-25"> {{ contact_service.c_salutationName }}</td>
+                    <td class="wid-25">{{ contact_service.c_firstName ~' '~ contact_service.c_lastName }}</td>
+                    <td class="wid-25">{{ contact_service.c_email }}</td>
+                    <td class="wid-20">{{ contact_service.s_service_name }}</td>
+                    <td class="wid-20">{{ contact_service.cs_sccore }}</td>
+
+
+                    <td class="process">
+                        <div class="floating-menu">
+                            <a><i class="material-icons">more_horiz</i></a>
+                            {{ pd_menu_render('App\\Menu\\Action\\Contact_service', {'contact_service': contact_service}) }}
+                        </div>
+                    </td>
+                </tr>
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</form>
+
+    {{ knp_pagination_render(contact_services) }}
+{% endblock %}
+
+
+

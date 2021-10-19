@@ -1,0 +1,38 @@
+<?php
+
+$fileHeaderComment = <<<COMMENT
+This file is part of the pdAdmin package.
+
+@package     pd-admin
+@license     LICENSE
+@author      Ramazan APAYDIN <apaydin541@gmail.com>
+@link        https://github.com/appaydin/pd-admin
+COMMENT;
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude('config')
+    ->exclude('var')
+    ->exclude('public')
+    ->exclude('assets')
+    ->exclude('templates')
+;
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHPUnit48Migration:risky' => true,
+        'php_unit_no_expectation_annotation' => false,
+        'array_syntax' => ['syntax' => 'short'],
+        'fopen_flags' => false,
+        'ordered_imports' => true,
+        'protected_to_private' => false,
+        'native_function_invocation' => ['include' => ['@compiler_optimized'], 'scope' => 'namespaced'],
+        'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
+        'header_comment' => ['header' => $fileHeaderComment, 'separate' => 'both', 'commentType' => 'PHPDoc'],
+    ])
+    ->setFinder($finder)
+    ->setCacheFile(__DIR__.'/var/cache/.php_cs.cache')
+;

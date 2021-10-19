@@ -1,0 +1,33 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_reclamation_send_title'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_reclamation_send_title'|trans }}</span>
+    <span class="desc"></span>
+    <a href="{{ path('admin_reclamation_index') }}" class="addbtn btn-success"   ><i class="material-icons">refresh</i></a>
+
+{% endblock %}
+
+{# Content Navigation #}
+{% block content_nav %}{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+    <div class="form-group row">
+        <label class="col-md-4 col-sm-4 col-xs-12 text-sm-right col-form-label" for="recla_description">
+            Reclamation<a href="#" tabindex="-1" class="info-text" data-toggle="popover" title="" data-content="service discreption" data-original-title="discreption">
+                <i class="material-icons infotext">info_outline</i>
+            </a></label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <textarea   placeholder="ansewr" class="form-control" readonly>{{ recla }}</textarea>
+
+        </div>
+    </div>
+    {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+{% endblock %}

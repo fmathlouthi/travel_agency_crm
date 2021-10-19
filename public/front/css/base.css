@@ -1,0 +1,36 @@
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+  background-color: #9999cc;
+  min-height:2em;
+  line-height:2em;
+  border-bottom: 1px inset black;
+  margin: 0;
+  }
+  
+ h1, p {
+  padding-left: 10px;
+  }
+  
+/* text-shadow drop center */
+.text-shadow-drop-center {
+	-webkit-animation: shadow-drop 0.6s 0.1s both;
+	        animation: shadow-drop 0.6s 0.1s both;
+}
+
+@-webkit-keyframes shadow-drop {
+  0% {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes shadow-drop {
+  0% {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  }
+}

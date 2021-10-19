@@ -1,0 +1,14 @@
+endroid_qr_code:
+    writer: 'png'
+    size: 80
+    margin: 2
+    foreground_color: { r: 0, g: 0, b: 0 }
+    background_color: { r: 255, g: 255, b: 255 }
+    error_correction_level: low # low, medium, quartile or high
+    encoding: UTF-8
+    logo_path: '%kernel.root_dir%/../vendor/endroid/qr-code/assets/images/symfony.png'
+    logo_width: 0
+    logo_height: 0
+    validate_result: false # checks if the result is readable
+    writer_options:
+        exclude_xml_declaration: true

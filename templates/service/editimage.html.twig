@@ -1,0 +1,55 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_Service_edit_title'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_Service_edit_title'|trans }}</span>
+    <span class="desc"></span>
+    <a href="{{ path('admin_service_index') }}" class="addbtn btn-success"   ><i class="material-icons">arrow_back</i></a>
+
+{% endblock %}
+
+{# Content Navigation #}
+{% block content_nav %}{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+
+
+
+    <div class="content-form">
+
+
+        <div class="content-form">
+            {{ form_start(form) }}
+
+
+
+            {{ form_row(form.image) }}
+
+
+            <div class="form-group row">
+                <label class="col-md-4 col-sm-4 col-xs-12 text-sm-right col-form-label">
+
+                </label>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+
+                    <img src="{{ asset(image)}}" style="width:400px;height:200px;">
+
+                </div>
+            </div>
+
+
+
+
+            {{ form_end(form) }}
+        </div>
+
+
+    </div>
+{% endblock %}
+
+

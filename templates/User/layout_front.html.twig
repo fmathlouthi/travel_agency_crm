@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="fr">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <link rel="icon" href="{{ asset('logo.png','admin')}}">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="14 days">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+    <meta name="description" content="{{ parameters('head_description') }}"/>
+    <meta name="keywords" content="{{ parameters('head_keywords1') }}"/>
+    <meta name="author" content="{{ parameters('head_author1') }}"/>
+    <link rel="icon" href="{{ asset('logo.png','admin')}}">
+    <title>{% block head_title %}{{ parameters('head_title1') }}{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Vendor -->
+        <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('front/css/base.css') }}" rel="stylesheet" />
+        <link href="{{ asset('front/css/shinigami.front.css') }}" rel="stylesheet" />
+        <link href="{{ asset('front/css/font-awesome.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('front/css/shinigami_style.css') }}" rel="stylesheet" />
+    {% endblock %}
+    <script>
+        const lang = {
+            btn_close: "{{ 'close'|trans }}",
+            btn_yes: "{{ 'yes'|trans }}",
+            search_text: "{{ 'search'|trans }}",
+            search_placeholder: "{{ 'select_item'|trans }}",
+            select_caption: "{{ 'selected'|trans({'%s':'0'}) }}",
+            select_caption_all: "{{ 'selected_all'|trans({'%s': '0'}) }}",
+            select_no_matches: "{{ 'no_matches'|trans({'%s': '0'}) }}",
+            popup_delete_message: "{{ 'delete_message'|trans }}"
+        }
+    </script>
+<style>
+
+    .birthday-card {
+    margin: 40px auto;
+    padding: 16px;
+    max-width: 400px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 24px 40px -8px #311B92;
+    }
+    .birthday-card img {
+    width: 100%;
+    }
+
+    .source-link {
+    text-align: center;
+    color: #311B92;
+    text-decoration: underline;
+    }
+
+    .source-link a {
+    color: #311B92;
+    text-decoration: none;
+    }
+
+     * {
+         box-sizing: border-box;
+     }
+
+
+
+    /* The grid: Four equal columns that floats next to each other */
+    .column1 {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    /* Style the images inside the grid */
+    .column1 img {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .column1 img:hover {
+        opacity: 1;
+    }
+
+    /* Clear floats after the columns */
+    .row1:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* The expanding image container */
+    .container1 {
+        position: relative;
+        display: none;
+    }
+
+    /* Expanding image text */
+    #imgtext {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: white;
+        font-size: 20px;
+    }
+
+    /* Closable button inside the expanded image */
+    .closebtn1 {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+
+    </style>
+</head>
+
+<body>
+<script>
+    var botmanWidget = {
+        frameEndpoint: "{{ path('memberchatbot') }}",
+
+
+
+
+        title: '',
+        mainColor: '#456765',
+        bubbleBackground: '#0d0675',
+        aboutText: '',
+        bubbleAvatarUrl: '',
+    };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+        {% block body %}
+        <div class="container">
+            <div id="logo_banner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="" class="buttonlogo anim-shine anim-flicker">TunInfoForYou</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+
+                      <!-- Navbar
+                      ================================================== -->
+                     {% include 'User/front/components/_nav_front.html.twig' %}
+
+                    </div>
+                </div>
+            </div>
+			{% block home_slider '' %}
+            <div class="content_main">{% block content '' %}</div>
+        </div>
+
+        {% endblock %}
+
+        {% block javascripts %}
+        <!-- scripts -->
+            <script src="{{ asset('front/js/jquery-3.3.1.min.js') }}" language="JavaScript" type="text/javascript"></script>
+            <script src="{{ asset('front/js/bootstrap.min.js') }}" language="JavaScript" type="text/javascript"></script>
+            <script>
+                function myFunction(imgs) {
+                    var expandImg = document.getElementById("expandedImg");
+                    var imgText = document.getElementById("imgtext");
+                    expandImg.src = imgs.src;
+                    imgText.innerHTML = imgs.alt;
+                    expandImg.parentElement.style.display = "block";
+                }
+            </script>
+        {% endblock %}
+        {% block final_javascripts '' %}
+    </body>
+</html>

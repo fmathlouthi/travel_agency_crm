@@ -1,0 +1,7 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    cache: "%twig_cache%"
+    form_themes: ['Admin/_other/bootstrap-hr-4.html.twig']
+    exception_controller: null

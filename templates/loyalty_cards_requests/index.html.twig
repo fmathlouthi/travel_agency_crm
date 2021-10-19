@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>LoyaltyCardsRequests index</title>
+
+{% block body %}
+    <h1>LoyaltyCardsRequests index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer_id</th>
+                <th>Date_of_request</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loyalty_cards_request in loyalty_cards_requests %}
+            <tr>
+                <td>{{ loyalty_cards_request.id }}</td>
+                <td>{{ loyalty_cards_request.customerId }}</td>
+                <td>{{ loyalty_cards_request.dateOfRequest ? loyalty_cards_request.dateOfRequest|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ loyalty_cards_request.status }}</td>
+                <td>
+
+                    <a href="{{ path('loyalty_cards_requests_edit', {'id': loyalty_cards_request.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('loyalty_cards_requests_new') }}">Create new</a>
+{% endblock %}

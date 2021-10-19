@@ -1,0 +1,122 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_contact_index'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_contact_index'|trans }}</span>
+{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+    <!-- Action Button -->
+    <div id="actions">
+        <div class="btn-group">
+            <button class="btn btn-success" data-toggle="modal" data-target="#searchFilter" data-tooltip title="{{ 'search_filter'|trans }}"><i class="material-icons">search</i></button>
+        </div>
+        <div class="btn-group">
+            <a href="{{ path('admin_contact_new') }}" class="btn btn-success" title="ADD clients" > <i class="material-icons">add</i></a>
+
+        </div>
+        {% if is_granted('ROLE_CONTACT_IMPORT') %}
+
+
+
+            <div class="btn-group">
+                <a href="{{ path('admin_contact_import') }}" class="btn btn-success" title="import clients" > <i class="material-icons">archive</i></a>
+
+            </div>
+
+
+        {% endif %}
+        {% if is_granted('ROLE_CONTACT_IMPORT') %}
+
+
+
+            <div class="btn-group">
+                <a href="{{ path('admin_export_contacts') }}" class="btn btn-success" title="Export clients" > <i class="material-icons">cloud_download</i></a>
+
+            </div>
+
+
+        {% endif %}
+    </div>
+
+    <!-- Search Filter Form -->
+    <div id="searchFilter" class="modal fade" tabindex="-1">
+        <form action="{{ path('admin_contact_index') }}" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><h4><i class="material-icons">search</i>{{ 'search_filter_title'|trans }}</h4></div>
+                <div class="modal-body">                    {{ form_widget(filterForm) }}                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                    <button type="submit" class="btn btn-success">{{ 'search_filter'|trans }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- Table List -->
+    <form id="pageForm" action="#" method="post">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+
+                    <th class="wid-15">{{ knp_pagination_sortable(contacts, 'Image'|trans, 'i.imagepath') }}</th>
+                   <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_SalutationName'|trans, 'c.salutationName') }}</th>
+                    <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_Name'|trans, 'c.firstName') }}</th>
+                    <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_Email'|trans, 'c.email') }}</th>
+                    <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_Address'|trans, 'c.address') }}</th>
+                    <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_phone1'|trans, 'c.phone') }}</th>
+                    <th class="wid-25">{{ knp_pagination_sortable(contacts, 'contact_Birthday'|trans, 'c.birhday') }}</th>
+
+                    <th class="process"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for contact in contacts %}
+                    <tr>
+
+
+                        <td class="wid-10"> <img class="d-block w-100 w-image-profil" {% if contact.i_imagepath == "" %} src="{{ asset('images/profil_default_image.png' ) }}"{% else %}
+                                src="{{ asset('images/'~contact.i_imagepath ) }}"
+                            {% endif %} alt="Image Profil">
+
+
+                        </td>
+                        <td class="wid-25"> {{ contact.c_salutationName }}</td>
+                        <td class="wid-25">{{ contact.c_firstName ~' '~ contact.c_lastName }}</td>
+                        <td class="wid-25">{{ contact.c_email }}</td>
+                        <td class="wid-20">{{ contact.c_address }}</td>
+                        <td class="wid-20">{{ contact.c_phone }}</td>
+                        <td class="wid-20">{{ contact.c_birhday ? contact.c_birhday|date('Y-m-d') : '' }}</td>
+
+
+                        <td class="process">
+                            <div class="floating-menu">
+                                <a><i class="material-icons">more_horiz</i></a>
+                                {{ pd_menu_render('App\\Menu\\Action\\Contact', {'contact': contact}) }}
+                            </div>
+                        </td>
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+    {{ knp_pagination_render(contacts) }}
+{% endblock %}
+
+
+

@@ -1,0 +1,215 @@
+{% extends 'User/front/home.html.twig' %}
+
+{% block description %}Votre club de pointe pour un laser game en Bourgogne. Shinigami vous ouvre ses portes, avec des bonus, des récompenses et des jeux.{% endblock %}
+
+{% block title %}
+Shinigami Laser game - Venez vivre l'expérience
+{% endblock %}
+
+
+{% block content %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        <div class="row">
+            <div class="col-lg-9">
+				<h4>Bienvenue {{name}}
+                </h4>
+        		<p>Les avantages du compte :<br>
+					<ul class="offre_home">
+						<li>Statistiques des parties jouées, des tournois...</li>
+						<li>Gagnez des points de fidélité grâces à nos offres</li>
+						<li>Profitez des récompenses et gagner des cadeaux</li>
+					</ul>
+				
+				</p>
+            </div>
+            {% if birthday|length > 0 %}
+
+                <div class="col-lg-3">
+                    <div class="alert alert-warning">
+                        <b>Happy Birthday</b><br>
+                        {{ birthday[0].c_salutationName }} <span class="redneon" style="color:blue ; font-style: italic; font-weight: bold">"{{ birthday[0].c_firstName }} {{ birthday[0].c_lastName }}"</span>
+                        <br> <span style='font-size:50px;'>&#128512;</span><br>
+                         <span class="redneon" style="color:darkred; background: deepskyblue;  font-style: italic; font-weight: bold">"A wish for you on your birthday, whatever you ask may you receive, whatever you seek may you find, whatever you wish may it be fulfilled on your birthday and always. Happy birthday!
+               "</span>
+                        </b> &#128525 &#128525	<br>
+                    </div>
+
+                </div>
+            {% else %}
+            <div class="col-lg-3">
+                <div class="alert alert-warning">
+                    <b>Happy Hour</b><br>
+                   You will get 100 for each reservation <br> <span style='font-size:100px;'>&#128512;</span><br>
+                    Colect your loaylty points for get more discount.
+                    </b> &#128525 &#128525	<br>
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Shinigami Laser dit : bonjour à tous ! Prêts pour une petite partie ?</p>
+
+        <h2>Restez en vie !</h2>
+        <p>Jouez, dépensez-vous, et <a href="">collectionnez des points</a>. Faites gagner votre équipe, ou soyez le dernier debout.</p>
+
+
+<div class="row">
+    <div class="col-lg-9">
+        <p><small>Jeu pour adultes et enfants, matériel fourni.<br>
+                Technologie de pointe 100% laser, entièrement aux normes européennes.</small></p>
+        <p>Endossez votre plastron, armez-vous <strong>et entrez dans nos labyrinthes</strong>.</p>
+        <p>Chaque équipe est identifiée <em>par une couleur sur le plastron et le pistolet</em>.<br>
+        ... Tous ceux qui ne sont pas de la même couleur, sont des adversaires !</p>
+        <p>Jouez librement avec des collègues, des amis... et désactivez vos adversaires par des tirs réussis.</p>
+
+    </div>
+    <div class="col-lg-3">
+        <div class="alert alert-warning">
+            <b>Happy Hour</b><br>
+            Tous les mardis et jeudis,<br>de 17h à 20h.<br>
+            2 parties achetées, la 3ème offerte.
+        </div>
+        <div class="alert alert-info"><br>
+                Grand tournoi les 16 et 17 février, nombreux prix à gagner.<br>
+                <i><a href="#">Je participe !</a></i>
+
+        </div>
+    </div>
+</div>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                </div>
+                <p class="mb-1"><i class="fa fa-exclamation-circle redneon"></i>&nbsp;&nbsp; N'oubliez pas d'arriver un quart d'heure avant votre réservation, sinon elle est perdue !</p>
+                <p class="mb-1"><i class="fa fa-crosshairs redneon"></i>&nbsp;&nbsp; Chaque partie de 20 mn, est précédée d'un briefing et du temps d'habillage.</p>
+                <small>&nbsp;</small>
+            </a>
+        </div>
+
+        <div class="card text-white bg-warning mb-3" style="max-width: 22rem; margin-top: 10px;">
+            <div class="card-header">Votre partie sur mesure &nbsp;&nbsp;&nbsp;- Prêts ?</div>
+            <div class="card-body">
+                <p class="card-text">Consultez nos packs : Happy Hour, Entreprise, Jeunesse, Anniversaire...<br>
+                Customisez votre parties avec nos options de jeu.<br>
+                Et adhérez à notre programme fidélité pour remporter des cadeaux et avantages.</p>
+            </div>
+        </div>
+
+        <div class="alert alert-dismissible alert-info">
+            <p class="copyright">&copy; 2020 TunInfoForYou .</p>
+            <p> Nos centres &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Plan du site &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Mentions légales</p>
+        </div>
+
+
+    {% endif %}
+
+{% endblock %}
+
+{% block home_slider %}
+
+ <div id="carousel_sgl" class="carousel slide anim-focus-in" data-ride="carousel">
+	 <ol class="carousel-indicators">
+		<li data-target="#carousel_sgl" data-slide-to="0" class="active"></li>
+		<li data-target="#carousel_sgl" data-slide-to="1"></li>
+		<li data-target="#carousel_sgl" data-slide-to="2"></li>
+         <li data-target="#carousel_sgl" data-slide-to="3"></li>
+         <li data-target="#carousel_sgl" data-slide-to="4"></li>
+         <li data-target="#carousel_sgl" data-slide-to="5"></li>
+         <li data-target="#carousel_sgl" data-slide-to="6"></li>
+         <li data-target="#carousel_sgl" data-slide-to="7"></li>
+	  </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+ 
+  <img class="d-block w-100" src="{{ asset( 'uploads/images/cccc.jpg'  ) }}" alt="First slide" style="height:400px;width:100%">                 
+				
+				<div class="carousel-caption d-none d-md-block">
+                        <h5>Restez en vie et gagnez des points</h5>
+
+                    </div>
+                </div>
+ <div class="carousel-item">
+                    <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+ 
+  <img class="d-block w-100" src="{{ asset( 'uploads/images/1.png'  ) }}" alt="First slide" style="height:400px;width:100%">
+				
+				<div class="carousel-caption d-none d-md-block">
+                        <h5>Restez en vie et gagnez des points</h5>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+
+                    <img class="d-block w-100" src="{{ asset( 'uploads/images/2.jpg'  ) }}" alt="First slide" style="height:400px;width:100%">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Restez en vie et gagnez des points</h5>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+
+                    <img class="d-block w-100" src="{{ asset( 'uploads/images/3.jpg'  ) }}" alt="First slide" style="height:400px;width:100%">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Restez en vie et gagnez des points</h5>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+
+                    <img class="d-block w-100" src="{{ asset( 'uploads/images/4.jpg'  ) }}" alt="First slide" style="height:400px;width:100%">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Restez en vie et gagnez des points</h5>
+
+                    </div>
+                </div>
+
+                {% for pro in promo %}
+
+                    <div class="carousel-item">
+                        <!-- <div class="carsl_text">Restez en vie et gagnez des points</div> -->
+                        <a href="https://{{ pro.linkpro }}"><img class="d-block w-100" src="{{ asset( 'uploads/images/' ~ pro.image ) }}" alt="First slide" style="height:400px;width:100%"></a>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ pro.name }}</h5>
+                            <p>{{ pro.description }}
+
+
+                          <h1> from {{ pro.startsAt ? pro.startsAt|date('Y-m-d') : '' }}
+                           To  {{ pro.endsAt ? pro.endsAt|date('Y-m-d') : '' }}</h1>
+                        </div>
+                    </div>
+                    </td>
+                    </tr>
+
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+
+
+            </div>
+			 <a class="carousel-control-prev" href="#carousel_sgl" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel_sgl" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+        </div>
+
+{% endblock %}
+
+
+
+

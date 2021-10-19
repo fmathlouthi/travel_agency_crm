@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<title>Contact</title>
+
+{% block body %}
+    <h1>Contact</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ contact.id }}</td>
+        </tr>
+        <tr>
+            <th>SalutationName</th>
+            <td>{{ contact.salutationName }}</td>
+        </tr>
+        <tr>
+            <th>FirstName</th>
+            <td>{{ contact.firstName }}</td>
+        </tr>
+        <tr>
+            <th>LastName</th>
+            <td>{{ contact.lastName }}</td>
+        </tr>
+        <tr>
+            <th>AccountId</th>
+            <td>{{ contact.userId }}</td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td>{{ contact.email }}</td>
+        </tr>
+        <tr>
+            <th>Birthday</th>
+            <td>{{ contact.birthday ? contact.birthday|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+
+        <tr>
+            <th>Address</th>
+            <td>{{ contact.address }}</td>
+        </tr>
+        <tr>
+            <th>CreatedAt</th>
+            <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>ModifiedAt</th>
+            <td>{{ contact.modifiedAt ? contact.modifiedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>PHone number</th>
+            <td>{{ contact.phone }}</td>
+        </tr>
+        <tr>
+            <th>CreatedById</th>
+            <td>{{ contact.createdById }}</td>
+        </tr>
+        <tr>
+            <th>ModifiedById</th>
+            <td>{{ contact.modifiedById }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_contact_index') }}">back to list</a>
+
+    <a href="{{ path('admin_contact_edit', {'id': contact.id}) }}">edit</a>
+
+    {{ include('contact/_delete_form.html.twig') }}
+{% endblock %}

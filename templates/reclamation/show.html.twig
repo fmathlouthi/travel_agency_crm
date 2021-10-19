@@ -1,0 +1,49 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_reclamation_show_title'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_reclamation_show_title'|trans }}</span>
+    <span class="desc"></span>
+    <a href="{{ path('admin_reclamation_log_index') }}" class="addbtn btn-success"   ><i class="material-icons">arrow_back</i></a>
+
+{% endblock %}
+
+{# Content Navigation #}
+{% block content_nav %}{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+
+<div class="content-form">
+
+
+    <div class="content-form">
+        <div class="form-group row">
+            <label class="col-md-4 col-sm-4 col-xs-12 text-sm-right col-form-label">
+                <th class="wid-25">{{ 'Description'|trans }}</th>
+            </label>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+
+                {{ reclamation.description }}
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-4 col-sm-4 col-xs-12 text-sm-right col-form-label">
+                <th class="wid-25">{{ 'ANSWER'|trans }}</th>
+            </label>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+
+                {{ reclamation.answer }}
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

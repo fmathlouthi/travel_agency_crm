@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit LoyaltyCardsRequests</title>
+
+{% block body %}
+    <h1>Edit LoyaltyCardsRequests</h1>
+
+    {{ include('loyalty_cards_requests/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('loyalty_cards_requests_index') }}">back to list</a>
+
+    {{ include('loyalty_cards_requests/_delete_form.html.twig') }}
+{% endblock %}

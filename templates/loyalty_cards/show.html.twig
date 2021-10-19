@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<title>LoyaltyCards</title>
+
+{% block body %}
+    <h1>LoyaltyCards</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ loyalty_card.id }}</td>
+            </tr>
+            <tr>
+                <th>Customer_id</th>
+                <td>{{ loyalty_card.customerId }}</td>
+            </tr>
+            <tr>
+                <th>Card_code</th>
+                <td>{{ loyalty_card.cardCode }}</td>
+            </tr>
+            <tr>
+                <th>Qrcode</th>
+                <td>{{ loyalty_card.qrcode }}</td>
+            </tr>
+            <tr>
+                <th>Date_of_issue</th>
+                <td>{{ loyalty_card.dateOfIssue ? loyalty_card.dateOfIssue|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_valid</th>
+                <td>{{ loyalty_card.isValid ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Loyalty_points</th>
+                <td>{{ loyalty_card.loyaltyPoints }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ loyalty_card.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('loyalty_cards_index') }}">back to list</a>
+
+    <a href="{{ path('loyalty_cards_edit', {'id': loyalty_card.id}) }}">edit</a>
+
+    {{ include('loyalty_cards/_delete_form.html.twig') }}
+{% endblock %}

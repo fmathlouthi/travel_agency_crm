@@ -1,0 +1,46 @@
+{% extends 'User/game.html.twig' %}
+
+{% block description %}Votre club de pointe pour un laser game en Bourgogne. Shinigami vous ouvre ses portes, avec des bonus, des récompenses et des jeux.{% endblock %}
+
+{% block title %}
+    TunInfoforyou - les promotion
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+        <div style="text-align:center; color:navajowhite;">
+            <h2>Our promotion</h2>
+            <p>Click on SAVOIR PLUS pour plus des informations:</p>
+        </div>
+
+        <!-- The four columns -->
+        <div class="row1">
+    {% for service in promotions %}
+            <div class="column1">
+                <img src="{{ asset( 'uploads/images/' ~ service.image ) }}" alt="Nature" style="width:100%" onclick="myFunction(this);">
+
+                <div style="  color:whitesmoke; font-size:100%; padding:1em;">
+                    <a href="{{ service.linkpro }}"   ><h6 style="color:white;">SAVOIR PLUS sur {{ service.name }} ..</h6></a></div>
+            </div>
+
+
+    {% else %}
+
+        <div style="  color:red; font-size:24px; padding:1em;">
+           <h3 style="color:red;">No actifs promotion ..</h3></div>
+    {% endfor %}
+        </div>
+
+        <div class="container1">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn1">&times;</span>
+            <img id="expandedImg" style="width:100%">
+            <div id="imgtext"></div>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,570 @@
+###
+# Security Permission
+###
+access_denied: Access denied!
+access_denied_not_authorized: Access denied! You are not authorized to do this.
+not_login_own_account: Access denied! You can not log in on your own account.
+not_login_super_admin: Access denied! You can not log in to the Super Admin account.
+not_login_already_switched: Access denied! You have already migrated to an existing user.
+not_login_switch_authorized: Access denied! Your competence is not enough for this process.
+ACL:
+    title: Access Control
+ACLProcess:
+    title: Custom Actions
+ROLE_USER:
+    title: User
+ROLE_ADMIN:
+    title: Admin
+ROLE_SUPER_ADMIN:
+    title: Super Admin
+ROLE_ALLOWED_TO_SWITCH:
+    title: Account Switch
+ROLE_DASHBOARD:
+    title: Admin Panel (Dashboard)
+    PANEL: Panel Listing
+ROLE_ACCOUNT:
+    title: Admin Account Management
+    LIST: Listing
+    EDIT: Editing
+    ADD: add new admin
+    CHANGEPASSWORD: Change Password
+    ROLES: Authorization
+    ACTIVATE: Activation
+    ADDGROUP: Add/Remove Group
+    DELETE: Delete
+    FREEZE: Account Freeze
+    ALLREAD: All Read
+    ALLWRITE: All Write
+ROLE_CONTACT:
+        title: Clients Management
+        LIST: Listing
+        EDIT: Editing
+        SEND: send birthday email
+        IMPORT: Import clients
+        EXPORT: Export clients
+        ADD: Add clients
+        DELETE: Delete
+        ALLREAD: All Read
+        ALLWRITE: All Write
+ROLE_LC:
+    title: Card Management
+    LIST: Listing
+    EDIT: Editing
+    VALIDATECARD: accepte card
+    REFUSECARD: Card Refuse
+    ADD: add new card
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+ROLE_LCR:
+    title: Requested card Management
+    LIST: Listing
+    EDIT: Editing
+    ADD: add new requested card
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+ROLE_RECLAMATION:
+    title:  reclamattion clients Management
+    LIST: Listing
+    EDIT: Editing
+    ANSWER: repondre au reclamation clients
+
+    ADD: add new reclamation
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+ROLE_RECLAMATIONLOG:
+    title:  reclamattion log Management
+    SHOW: check the reclamation log
+    LIST: Listing
+ROLE_CONTACTSERVICE:
+    title: Clients Services Management
+    LIST: Listing
+    EDIT: Editing
+    CREATEPROMO: Create campain emailing
+    EDITSCORE: Update clients score
+    ADD: Add clients services
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+ROLE_PROMOTION:
+    title: Promotion Management
+    LIST: Listing
+    EDIT: Editing
+    ADD: Add promotin
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+ROLE_SERVICE:
+    title: Services Management
+    LIST: Listing
+    EDIT: Editing
+    ADD: Add services
+    DELETE: Delete
+    ALLREAD: ALL Read
+    ALLWRITE: All Write
+
+ROLE_GROUP:
+    title: Admin Group Management
+    LIST: Listing
+    EDIT: Editing
+    NEW: New Group
+    DELETE: Delete
+    ROLES: Authorization
+ROLE_SETTINGS:
+    title: Admin Settings Management
+    GENERAL: General
+    EMAIL: Email
+    USER: Account
+    MEDIA: Media
+    CONTACT: Contact
+    CORE: Core
+    ROUTING: Routing
+ROLE_MAIL:
+    title: Admin Mail Manager
+    TEMPLATELIST: Template Listing
+    TEMPLATEADD: New Template
+    TEMPLATEEDIT: Edit Template
+    TEMPLATEACTIVE: Enable Template
+    TEMPLATEDELETE: Delete Template
+    LOGGER: Log Listing
+    VIEWLOG: Log View
+    LOGDELETE: Log Delete
+ROLE_WIDGET:
+    title: Admin Widget
+    USERINFO: User Information
+    QUICKACTION: Quick Action
+    USERSTATISTICS: User Statistics
+    CONTACTBIRTHDAY: clients birthday
+    VALDATECARD: number of accepted cards
+    REQUESTEDCARD: number of demanded cards
+    ACTIVEPROMOTION: show active promotion
+    CUSTOMERTOTAL: number of clients
+    REFUSEDCARD: number of refused cards
+    INACTIVEADMIN: number of inactifs admin
+###
+# Time Ago
+###
+diff:
+    year:   year
+    month:  month
+    day:    day
+    hour:   hour
+    minute: minute
+    second: second
+    ago:    ago
+
+###
+# General
+###
+edit: Edit
+edit_roles: Authorization
+delete: Delete
+change_password: Change Password
+edit_group: Edit Group
+switch_user: Account Login
+activate_deactivate: Enable / Disable
+freeze_unfreeze: Account Suspend / Unsuspend
+add_new: Add New
+close: Close
+yes: Yes
+add: Add
+refresh: Refresh
+add_widget: Add Widget
+search: Search..
+search_filter: Filter
+search_placeholder: Search...
+active: Enabled
+deactive: Disabled
+select_all: Select All
+select_item: Selection Item
+selected: '{%s} Selected'
+selected_all: '{%s} Selected'
+no_matches: 'No matches found for "{%s}"'
+delete_message: Are you sure you want to delete ?
+save: Save
+homepage: Homepage
+upload_image_btn: Upload Image
+Default: Default
+default: Default
+test: Test
+left: Left
+right: Right
+top: Top
+bottom: Alt
+middle: Center
+center: Center
+top_left: Top Left
+top_right: Top Right
+bottom_left: Bottom Left
+bottom_right: Bottom Right
+enable: Enable
+disable: Off
+enabled: Enabled
+disabled: Disabled
+account_frozen: Account Frozen
+date: Date
+success: Successful
+process_completed: Operation completed.
+changes_saved: Changes have been saved.
+remove_complete: Deletion completed.
+sorry_not_existing: Sorry no registration is available.
+test_email_success: Test email sent.
+user_registration_disable: User registration is currently closed, please try again later.
+440_not_found: 404 Page Not Found!
+440_not_found_description: Sorry, the page you were looking for could not be found or may be removed.
+
+###
+# Pages
+###
+nav_dashboard: Panel
+admin_dashboard: Admin Panel
+admin_dashboard_desc: Admin Area
+admin_widget_modal_title: Widgets
+nav_profile_edit: My Account
+nav_profile_password: Change Password
+nav_profile_return_admin: Return Admin
+nav_profile_logout: Log Out
+
+search_keyword: Keyword
+search_keyword_account_placeholder: Name / Email / Phone
+nav_account: Admins
+nav_admin_account: Admin Accounts
+nav_user_account: clients Accounts
+nav_account_edit: Profile
+nav_account_change_password: Change Password
+nav_account_roles: Authorization
+nav_account_group: Group
+account_firstname: Name
+account_email: Email
+account_phone: Phone
+account_lastlogin: Last Login
+account_status: Account Status
+search_filter_title: Filter Results
+admin_account_list: Admin Accounts
+admin_account_desc: All registered admin
+admin_user_account_list: Clients Accounts
+admin_user_account_desc: All registered clients
+account_edit_title: Edit Account
+firstname: Name
+lastname: Surname
+phone: Phone
+website: Website
+company: Company
+language: Language
+created_at: Creation Date
+account_change_password_title: Change Password
+account_add_group_title: Group
+account_groups: Groups
+account_roles_title: Private Authorization
+
+search_keyword_Contacts_placeholder: Name / Email / Telephone / adress
+nav_contact: Contacts
+nav_contact_edit: Edit Contact
+
+contact_Name: Name
+contact_Email: Email
+contact_SalutationName: SalutationName
+contact_Address: Adress
+
+contact_Birthday: Birthday
+contact_phone1: Phone
+
+salutationName: Salutation Name
+firstName: FirstName
+lastName: LastName
+email: Email
+birthday: Birthday
+phone1: Phone
+address: Adress
+file_import: Import file
+chose_file_please: please select a csv file
+import: run import
+contact_import_title: Contacts Import
+admin_contact_index: Contacts list
+admin_contact_desc: Show All contacts
+contact_edit_title: Edit le Contact
+contact_new_title: Add new contact
+
+
+
+SalutationName: SalutationName
+Name: Name
+Email: Email
+Service: service
+
+Score: Score
+
+
+start_campain: start campain
+admin_reclamationlog_index: Reclamation log list
+admin_reclamationlog_desc: Show All Reclamation log
+admin_reclamation_show_title: show the client feedback
+admin_ContactService_index: Contacts services list
+admin_ContactService_desc: Show All contacts services
+admin_ContactService_edit_title: Edit the Contact services
+admin_ContactService_new_title: Add new contact  services
+
+service_name: service name
+
+
+
+
+admin_Service_index:  services list
+admin_Service_desc: Show All  services
+admin_Service_edit_title: Edit the  services
+admin_Service_new_title: Add new services
+
+admin_Promotion_index:  Promotion list
+admin_Promotion_desc: Show All  Promotion
+admin_Promotion_edit_title: Edit the  promotion
+admin_promotion_new_title: Add new promotion
+Promotion_name: name
+Promotion_start: start date
+Promotion_ends: end date
+name: name
+description: description
+image: image
+startsAt: start date
+endsAt: end date
+linkpro: promotion link
+admin_lc_index: cards list
+admin_lc_desc: Show All cards
+customer_name: Customer name
+Card_code: card code
+Date_of_issue: accepted date
+Loyalty_points: totale  points
+loyalty_points: totale  points
+loyalty_cards: loyalty cards
+admin_lc_edit_title: loyalty cards update
+admin_reclamation_index: Recalamation list
+admin_reclamation_desc: Show all reclaamtion
+RECLAMATION_DATE: date of reclamation
+admin_reclamation_send_title: Answer to the reclamation client
+Reclamation: client reclamation
+Answer: Reclamation response
+
+Reclamation_date: Reclamation date
+nav_group: Groups
+accouunt_group_list_title: User Groups
+accouunt_group_list_desc: Members groups
+group_name: Group Name
+group_roles: Authorities
+account_group_edit_title: Edit Group
+account_group_edit_desc: User group edit
+nav_group_edit: Details
+nav_group_roles: Authorization
+account_group_new_title: New Group
+account_group_new_desc: Create new user group
+account_group_role_title: Group Authorization
+account_group_role_desc: User group authorization
+
+nav_system: Admin Panel
+nav_system_header: System Settings
+nav_tools_header: System Tools
+nav_config: Settings
+settings_general: General Settings
+settings_general_desc: System settings
+admin_refresh_cache: Refresh Cache
+admin_refresh_cache_desc: After making changes to the system settings, you need to refresh the cache. Do you want to refresh the cache now?
+nav_config_general: General
+head_title: Site Title
+head_title_info: The name of your site, shown as a suffix.
+head_title_pattern: Title Design
+head_title_pattern_info: '&T: Active page header, <br>&P: Panel header'
+head_description: Site Description
+head_description_info: The metadata for the panel is the 'description' tag field.
+head_author: Site Author
+head_author_info: Specifies the site maker.
+head_keywords: Keyword
+footer_copyright: Footer Copyright
+default_locale: Default Language
+default_country: Default Country
+site_logo: Site Logo
+default_image: Default Image
+site_favicon: Site Favicon
+
+settings_contact: Contact
+settings_contact_desc: System and site communication settings
+nav_config_contact: Contact
+contact_email: Contact Email
+contact_email_info: System mail and contact form are sent to this address.
+contact_phone: Phone
+contact_mobile_phone: Mobil Phone
+contact_fax_number: Fax
+contact_address: Local Address
+contact_facebook: Facebook
+contact_twitter: Twitter
+contact_google: Google+
+contact_youtube: Youtube
+contact_linkedin: LinkedIn
+contact_whatsapp: WhatsApp
+
+settings_email: Email Settings
+settings_email_desc: System email settings
+nav_config_email: Email
+mail_disable_delivery: Email System
+mail_disable_delivery_info: Enable the e-mail system, the system will not be able to send e-mail if it is closed.
+mail_transport: Protocol
+mail_transport_info: The system is the forwarding protocol for e-mails, set by default.
+mail_host: Host
+mail_port: Port
+mail_port_info: Ports 465 and 587 are used for SSL connection. For non-SSL connections, port 25 is used.
+mail_username: Username
+mail_username_info: Enter the username for the server to be contacted.
+mail_timeout: Timeout
+mail_timeout_info: STMP sets the timeout period for the connection
+mail_password: Password
+mail_password_info: Enter the password for the server to connect to. The password is hidden, it will not appear after recording.
+mail_encryption: Encryption
+mail_encryption_info: The type of encryption to use for the connection. SSL is used for port '465' and TLS is used for port '587'.
+mail_auth_mode: Authentication Mode
+mail_auth_mode_info: Authentication mechanism and security level
+mail_allow_self_signed: Self-Signed Certificates
+mail_allow_self_signed_info: Allow self-signed certificates. Requires SSL Verification
+mail_verify_peer: SSL Verification
+mail_verify_peer_info: Require verification of SSL certificate used
+mail_sender_address: Sender Email
+mail_sender_address_info: The name of the system to which the emails are sent.
+mail_sender_name: Sender Name
+mail_sender_name_info: This is the sender name of the system emails.
+mail_test_address: Test Email
+mail_test_address_info: Enter the e-mail address to be used for the test.
+
+settings_user: Account Settings
+settings_user_desc: User account settings
+nav_config_user: Account
+user_registration: User Registration
+user_registration_info: Activate user registration.
+user_default_group: Default Group
+user_default_group_info: The group to which the new user automatically join.
+user_login_redirect: Login Redirect
+user_login_redirect_info: This is the page that the user will be redirected to after login.
+user_logout_redirect: Logout Redirect
+user_logout_redirect_info: This is the page the user will be redirected to after logout.
+user_email_confirmation: Verify Email
+user_email_confirmation_info: Enable e-mail authentication for new members.
+user_welcome_email: Welcome Email
+user_welcome_email_info: Sends a welcome e-mail for new members.
+
+settings_media: Media Settings
+settings_media_desc: System media settings
+nav_config_media: Media
+media_library: Image Library
+media_library_info: Image editing is the php library to be used for improvement.
+media_optimize: Image Optimize
+media_optimize_info: Enable optimization for images uploaded with the pdAdmin upload system.
+media_max_height: Image Max Height
+media_max_height_info: The maximum height value for images.
+media_max_width: Image Max Width
+media_max_width_info: The maximum width value for images.
+media_quality: Image Quality
+media_quality_info: Enter a value from 0 to 100, the default is 80.
+media_watermark: Watermark
+media_watermark_info: Apply a watermark on the image.
+watermark_text: Text
+watermark_image: Image
+media_wm_image: Watermark Image
+media_wm_image_info: It is recommended to use a transparent image in the '.png' format for the watermark.
+media_wm_image_position: Watermark Position
+media_wm_image_position_info: Specifies the starting point of the location to add the flag to.
+media_wm_image_x: Watermark X
+media_wm_image_x_info: Optional starting pixel on the X coordinate of the flag.
+media_wm_image_y: Watermark Y
+media_wm_image_y_info: Optional pixel on the Y coordinate of the flag.
+media_wm_font: Watermark Font
+media_wm_font_info: Select the font file for the watermark. The default font will be used when no file is selected.
+upload_font_btn: Upload Font
+media_wm_font_text: Watermark Text
+media_wm_font_size: Font Size
+media_wm_font_size_info: The default font size is set to 24 pixels.
+media_wm_font_color: Font Color
+media_wm_font_color_info: You can enter the color code for the font in Hex color as RGBA.
+media_wm_font_align: Font Horizontal Alignment
+media_wm_font_align_info: Horizontal font alignment.
+media_wm_font_valign: Font Vertical Alignment
+media_wm_font_valign_info: Vertical font alignment.
+media_wm_font_x: X Position
+media_wm_font_x_info: Defines the horizontal base point of the first character.
+media_wm_font_y: Y Position
+media_wm_font_y_info: Defines the vertical base point of the first character.
+media_wm_font_angle: Font Return Angle
+media_wm_font_angle_info: Return value for font, works only when font is loaded.
+
+settings_core: Core Settings
+settings_core_desc: System core settings
+nav_config_core: Core
+active_language: Active Languages
+active_language_info: Used to add new language to the system.
+list_count: Listing count
+list_count_info: Admin panel is the default listing number.
+remember_time: Remember Me Time
+remember_time_info: The default is (604800sn) week, which sets the duration of the Remember Me feature used in the user login system in seconds.
+twig_cache: Twig Cache
+twig_cache_info: Enable Twig cache. Close for development.
+admin_allow_ips: Admin IP Access
+admin_allow_ips_info: Enables IP access to the Admin panel, allowing only entered IP addresses. Enter the IP addresses below.
+auth_allow_ips: Authorization IP Access
+auth_allow_ips_info: Enables IP access for Authorization, only the entered IP addresses are allowed. Enter the IP addresses below.
+
+settings_routing: Routing Settings
+settings_routing_desc: System general routing settings
+nav_config_routing: Routing
+routing_admin: Admin Panel URL
+routing_admin_info: Routing to the admin panele transport.
+routing_login: User Login URL
+routing_login_info: The address visitors use to log in to their account.
+routing_logout: User Logout URL
+routing_logout_info: The address used for members to sign out.
+routing_register: User Register URL
+routing_register_info: The address that visitors use when registering.
+routing_resetting: User Password Reset URL
+routing_resetting_info: The address used by users to reset their passwords.
+
+###
+# Widget
+###
+widget_user_info:
+    name: User Info
+    description: Shows number of registered members
+    count: Registered Member
+widget_user_statistics:
+    name: User Statistics
+    description: Displays detailed user statistics.
+widget_quick_action:
+    name: Quick buttons
+    description: Create easy-access menu buttons.
+    add_button: Add button
+widget_activeadmin:
+    name: Active Admins
+    description: Shows number of active admins
+    count: Active Admins
+widget_inactiveadmin:
+    name: InActive Admins
+    description: Shows number of Inactive admins
+    count: InActive Admins
+widget_activepromotion:
+    name: Active Promotion
+    description: Shows number of active Promotion
+    count: Active Promotions
+widget_customerstotal:
+    name: customers total
+    description: Shows number of customers
+    count: customers total
+widget_clinetsbirthday:
+    name: customers Birth-day
+    description: Shows number of customers Birth-day
+    count: customers total Birth-day
+widget_valdatecard:
+    name: Nombre of accepted cards
+    description: show the number of accepted card
+    count: accepted cards
+widget_refusedcard:
+    name: number of refused cards
+    description: show the number of refused cards
+    count: refused cards
+widget_requestedcard:
+    name:  number of demanded cards
+    description: show the number of demanded cards
+    count: demanded cards

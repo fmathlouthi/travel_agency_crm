@@ -1,0 +1,79 @@
+<div class="bs-docs-section clearfix">
+    <div class="bs-component">
+<nav class="navbar navbar-expand-lg navbar-ex navbar-dark bg-dark anim-focus-in">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if active == "home" %} active {% endif %}">
+                <a class="nav-link" href="{{ path('dashboardmember') }}"><span class="material-icons">
+border_all
+</span>Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <div class="dropdown-container">
+                <a class="nav-link dropdown-toggle{% if active == "game" %} active {% endif %}" data-toggle="dropdown" href="#"><span class="material-icons">
+how_to_reg
+</span>les services  <span class="caret"></span></a>
+                <div class="dropdown-menu" aria-labelledby="themes">
+                    <a class="dropdown-item" href="{{ path('memberpromotion') }}">les actifs promotion</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('memberservice') }}">Notre services</a>
+
+                </div>
+                </div>
+            </li>
+           {% if is_granted('ROLE_SUPER_ADMIN') == false and is_granted('ROLE_ADMIN') == false %}
+				<li class="nav-item">
+					{# member_menu #}  
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}				
+						{% if member_menu is defined %}
+						   {% set menu_drop_active = member_menu %}
+						{% else %}
+							{% set menu_drop_active = "" %}
+						{% endif %}					 
+						<div class="dropdown-container">
+							<a class="nav-link dropdown-toggle{% if active == "account" %} active{% endif %}" data-toggle="dropdown" href="#"><span class="material-icons">
+how_to_reg
+</span>Mon Compte <span class="caret"></span></a>
+							<div class="dropdown-menu" aria-labelledby="themes">
+								<a class="dropdown-item {% if menu_drop_active == "scores" %}active{% endif %}" href="{{ path('accountmember') }}scores">mon score</a>
+								<a class="dropdown-item {% if menu_drop_active == "avantages" %}active{% endif %}" href="{{ path('accountmember') }}avantages">Ma carte</a>
+								<a class="dropdown-item {% if menu_drop_active == "profile" %}active{% endif %}" href="{{ path('accountmember')}}profile">Mon profil</a>
+							</div>
+						</div>                    
+					{% else %}
+                        <a class="nav-link" href="">Login</a>
+					{% endif %}
+               <li class="nav-item {% if active == "recla" %}active{% endif %}">
+                   <a class="nav-link" href="{{ path('member_recla') }}"><span class="material-icons">
+border_all
+</span>Contact Us <span class="sr-only">(current)</span></a>
+               </li>
+				</li>
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<li class="nav-item">
+							<a class="nav-link" href="{{ path('security_logout') }}">    <span class="material-icons">
+power_off
+</span>Déconnexion</a>
+
+
+
+					</li>
+				{% endif %}
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link" href="">Admin</a>
+				</li>
+			{% endif %}
+        </ul>
+
+
+
+
+    </div>
+</nav>
+    </div>
+</div>

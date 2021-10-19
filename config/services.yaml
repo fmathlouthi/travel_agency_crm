@@ -1,0 +1,56 @@
+parameters:
+    eagle.api: 'https://www.eaglecanoeclub.co.uk/api'
+    DIALOGFLOW_TOKEN: 'abcd....'
+    upload_dir: '%kernel.project_dir%/public/uploads/clientcsv/'
+    upload_dir_image: '%kernel.project_dir%/public/uploads/images/'
+    upload_dir_image_pro: '%kernel.project_dir%/public/images/'
+    upload_dir_image_service: '%kernel.project_dir%/public/images/centers/'
+    CompanyName: 'TunInfoForYou'
+imports:
+    - { resource: "default_config.yaml" }
+    
+    
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Widgets,Kernel.php}'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+        
+       
+    
+     
+   
+
+
+    # Load Widgets
+    App\Widgets\:
+        resource: '../src/Widgets/*'
+        tags:
+            - { name: kernel.event_listener, event: widget.start, method: builder }
+
+    # Switch User Listener
+    security.authentication.switchuser_listener:
+        class: App\Listener\SwitchUserListener
+        public: false
+        abstract: true
+        arguments: [ "@security.token_storage",
+                     "",
+                     "@security.user_checker",
+                     "",
+                     "@security.access.decision_manager",
+                     "@?logger",
+                     "_switch_user",
+                     "ROLE_ALLOWED_TO_SWITCH",
+                     "@?event_dispatcher",
+                     "ROLE_SWITCHABLE" ]
+        tags:
+            - { name: monolog.logger, channel: security }
+    App\Services\ActivityService:
+        arguments: [ '%eagle.api%' ]

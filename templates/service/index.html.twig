@@ -1,0 +1,90 @@
+{# Template Parts #}
+{% extends "Admin/base.html.twig" %}
+
+{# Document #}
+{% block head_title %}{{ title('admin_Service_index'|trans) }}{% endblock %}
+
+{# Content Title #}
+{% block content_head %}
+    <span class="text">{{ 'admin_Service_index'|trans }}</span>
+    <span class="desc">{{ 'admin_Service_desc'|trans }}</span>
+{% endblock %}
+
+{# Content Body #}
+{% block content_body %}
+<!-- Action Button -->
+<div id="actions">
+    <div class="btn-group">
+        <button class="btn btn-success" data-toggle="modal" data-target="#searchFilter" data-tooltip title="{{ 'search_filter'|trans }}"><i class="material-icons">search</i></button>
+    </div>
+    <div class="btn-group">
+        <a href="{{ path('admin_service_new') }}" class="btn btn-success" title="Ajouter service">  <i class="material-icons">add</i></a>
+
+    </div>
+
+
+</div>
+
+<!-- Search Filter Form -->
+<div id="searchFilter" class="modal fade" tabindex="-1">
+    <form action="{{ path('admin_service_index') }}" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h4><i class="material-icons">search</i>{{ 'search_filter_title'|trans }}</h4></div>
+            <div class="modal-body">                    {{ form_widget(filterForm) }}                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ 'close'|trans }}</button>
+                <button type="submit" class="btn btn-success">{{ 'search_filter'|trans }}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Table List -->
+<form id="pageForm" action="#" method="post">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="wid-15">{{ knp_pagination_sortable(services, 'Image'|trans, 's.image') }}</th>
+
+                <th class="wid-13">{{ knp_pagination_sortable(services, 'Service name'|trans, 's.serviceName') }}</th>
+                <th class="wid-13">{{ knp_pagination_sortable(services, 'created At '|trans, 's.createAt') }}</th>
+
+                <th class="wid-13">{{ knp_pagination_sortable(services, 'updated At'|trans, 's.updateAt') }}</th>
+
+                <th class="process"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <td class="wid-10"> <a href="{{ path('admin_service_editimage' , {'id': service.id}) }}"  title="Ajouter promotion"> <img class="d-block w-100 w-image-profil" {% if service.image == "" %} src="{{ asset('images/profil_default_image.png' ) }}"{% else %}
+                    src="{{ asset('images/centers/'~service.image ) }}"
+                    {% endif %} alt="Image Profil"></a></td>
+            <td class="wid-10"> <a href="{{ service.linkservice }}">{{ service.serviceName }}</a></td>
+                <td class="wid-10">{{ service.createAt ? service.createAt|date('Y-m-d') : '' }}</td>
+
+            <td class="wid-10">{{ service.updateAt ? service.updateAt|date('Y-m-d') : '' }}</td>
+
+                <td class="process">
+                    <div class="floating-menu">
+                        <a><i class="material-icons">more_horiz</i></a>
+                        {{ pd_menu_render('App\\Menu\\Action\\Service', {'service': service}) }}
+                    </div>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+</form>
+
+    {{ knp_pagination_render(services) }}
+{% endblock %}
+
+
+

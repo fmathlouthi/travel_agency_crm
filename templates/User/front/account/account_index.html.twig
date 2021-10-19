@@ -1,0 +1,300 @@
+{% extends 'User/front/account/account.html.twig' %}
+
+{% block description %}
+    Votre club de pointe pour un laser game en Bourgogne. Shinigami vous ouvre ses portes, avec des bonus, des récompenses et des jeux.
+{% endblock %}
+
+{% block title %}
+    Shinigami Laser Game - Mon Compte
+{% endblock %}
+
+
+{% block content %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="row">
+            <div class="col-xs-6 col-md-2 text-center">
+                <h4><span class="redneon">{% if customer.c_salutationName %}{{ customer.c_salutationName }}{% endif %}</span></h4>
+                <a href="{{ path('member_editimg') }}"><img class="d-block w-100 w-image-profil" src="{{ asset(customer_image ) }}" alt="Image Profil"></a>
+            </div>
+            <div class="col-xs-6 col-md-10">
+                <h4>Bonjour &nbsp;{{ customer.c_firstName }} {{ customer.c_lastName }}</h4>
+                <p>Bienvenue dans votre espace personnel.</p>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            </div>
+        </div>
+
+        <br><br>
+    {% endif %}
+
+    <div id="account-nav">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="nav-item">
+                <a class="nav-link {% if member_menu == "scores" %}active{% endif %} show" href="{{ path('account_member', {'part': 'scores'}) }}">Mon score</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if member_menu == "avantages" %}active{% endif %} show" href="{{ path('account_member', {'part': 'avantages'}) }}">Ma carte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if member_menu == "profile" %}active{% endif %} show"  href="{{ path('account_member', {'part': 'profile'}) }}">Mon Profil</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade {% if member_menu == "scores" %}active{% endif %} show slideinleft" id="scores">
+                <div class="row">
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="scores_panel">
+                            <h3>Points gagnés</h3>
+                            {% if loyalty_cards|length > 0 and loyalty_cards.lc_loyalty_points > 0 %}
+                                <div class="scores_panel_num_ct">
+                                    {{ loyalty_cards.lc_loyalty_points }}
+                                </div>
+                                <br><br>
+
+
+                            {% else %}
+                                <p>Aucun point gagné.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+                <br><br>
+                {% if loyalty_cards|length > 0 and loyalty_cards.lc_loyalty_points > 0 %}
+                <p>Nombre de parties jouées : <b>{{ loyalty_cards.lc_loyalty_points }}</b>
+                    &nbsp;&nbsp; Parties remportées : <b><span class="redneon">{{ loyalty_cards.lc_loyalty_points }}</span></b>
+                    &nbsp;&nbsp;&nbsp; dont &nbsp; Victoires solo : <b><span class="redneon">{{ loyalty_cards.lc_loyalty_points }}</span></b>
+                    &nbsp;&nbsp; Victoires en équipe : <b><span class="redneon">1425</span></b></p>
+                <p>Tournois disputés : {{ loyalty_cards.lc_loyalty_points }}
+                    &nbsp;&nbsp; Moyenne d'activités par mois : <b>{{ loyalty_cards.lc_loyalty_points }}</b>
+                    &nbsp;&nbsp; Dernière activité : <b><span class="redneon">1245/87/85</span></b></p>
+                {% endif %}
+            </div>
+
+            <div class="tab-pane fade {% if member_menu == "avantages" %}active{% endif %} anim-focus-in-2" id="avantages">
+
+                {% if loyalty_cards|length < 1 and card_request|length < 1 %}
+                    {# loyalty_cards|length < 1 and (card_request|length < 1 or (card_request.status != 0 and card_request.status != 2)) #}
+                    <div class="row">
+                        <div class="col-xs-10 col-md-7 mbrs_avantages_style">
+                            <p>Façon dont les points de fidélité sont comptabilisés:<br>
+                                + X pour chaque partie jouée<br>
+                                + X pour chaque victoire (score) arrondi<br>
+                                Donne droit à ... <br>
+                                X jeux gratuits pour tant...<br>
+                                Le poster, le porte-clés, at autres gadgets<br>
+                                Une soirée gratuite avec Kirsten Dunst, etc<br>
+                                Avec forfaits possibles... bon client ? + salle louée avec des collègues, etc
+                            </p>
+                        </div>
+
+                        <div class="col-xs-3 col-md-5" align="center" style="background-color:transparent;">
+                            <div class="card text-white mb-3" style="max-width: 20rem;">
+                                <div class="card-header card-header-adhesion">Adhérez à notre<br>
+                                    programme de fidelité</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Devenez membre</h4>
+                                    <p class="card-text">Grace à nos cartes de fidélité gratuites, valables dans tous les clubs Shinigami, déplacez-vous et jouez, vos avantages seront cumulés.</p>
+                                    <p><a href="{{ path('card_request') }}" class="btn-card-order">Commandez une carte de fidélité</a></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                {% endif %}
+
+                {% if card_request|length > 0 and card_request.lcr_status == 0 %}
+                    <div class="row">
+                        <div class="col-xs-10 col-md-7 mbrs_avantages_style">
+                            <p>Façon dont les points de fidélité sont comptabilisés:<br>
+                                + X pour chaque partie jouée<br>
+                                + X pour chaque victoire (score) arrondi<br>
+                                Donne droit à ... <br>
+                                X jeux gratuits pour tant...<br>
+                                Le poster, le porte-clés, at autres gadgets<br>
+                                Une soirée gratuite avec Kirsten Dunst, etc<br>
+                                Avec forfaits possibles... bon client ? + salle louée avec des collègues, etc
+                            </p>
+                        </div>
+
+                        <div class="col-xs-3 col-md-5 text-center">
+                            <div class="card text-white mb-3" style="max-width: 20rem;">
+                                <div class="card-body">
+                                    <h4 class="card-title">Carte de fidelité</h4>
+                                    <p class="card-text">
+                                        Demande de carte de fidelité enregistrée.<br><br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if loyalty_cards|length > 0 %}
+                    {% set loyalty_card_1 = loyalty_cards %}
+                    <div class="row">
+                        <div class="col-xs-10 col-md-7">
+                            <p>Comment vos points de fidélité sont comptabilisés :<br>
+                                + X pour chaque partie jouée<br>
+                                + X pour chaque victoire, votre score arrondi<br>
+                                Donne droit à ... <br>
+                                X parties gratuites pour tant...<br>
+                                Le poster, le porte-clés, at autres souvenirs<br>
+                                Une soirée gratuite avec Kirsten Dunst, etc<br>
+                                Avec forfaits possibles... bon client ? + salle louée avec des collègues, etc
+                            </p>
+                        </div>
+
+                        <div class="col-xs-3 col-md-5 text-center">
+                            <div class="card mb-3">
+
+                                {% if loyalty_card_1.lc_status == "validated" %}
+                                    <div class="card-header card-header-adhesion"> Carte de fidelité<br>commandée</div>
+                                    <div class="card-body">
+                                        <p class="card-text card-text-small">Votre carte de fidelité Shinigami Laser<br>a été commandée. <br><br>
+                                            Nous vous informerons de la réception<br>de votre carte dans notre centre<br>afin que vous puissiez la récupérer.</p>
+                                    </div>
+                                {% endif %}
+                                {% if loyalty_card_1.lc_status == "supplied" %}
+                                    <div class="card-header card-header-adhesion">Carte de fidelité <br>livrée</div>
+                                    <div class="card-body">
+                                        <p class="card-text card-text-small">Votre carte de fidelité Shinigami Laser<br>a été livrée.<br><br>
+                                            Elle est disponible dès maintenant<br>dans votre centre.<p>
+                                    </div>
+                                {% endif %}
+                                {% if loyalty_card_1.lc_status == "withdraw" %}
+                                    <div class="card-body">
+                                        <h4 class="card-title">Carte de fidelité</h4>
+                                        <p class="card-text">Numéro de carte : {{ loyalty_card_1.lc_card_code }} <p>
+                                        <p class="card_points">{{ loyalty_card_1.lc_loyalty_points }}<br>
+                                            <span>points de fidélité</span></p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <br>
+                            <div class="card-qr-code">
+                                <h3>QR CODE</h3>
+                                <img src="{{ qr_code_url(qr_code.text) }}" style=vertical-align:middle;"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                {% endif %}
+            </div>
+
+
+            <div class="tab-pane fade {% if member_menu == "profilepw" %}active{% endif %} slideinright" id="profil">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+
+                        {% block member_editpw  %}
+                        {% endblock %}
+
+                    </div>
+
+
+                </div>
+              </div>
+
+            <div class="tab-pane fade {% if member_menu == "profileimg" %}active{% endif %} slideinright" id="profil">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+
+
+                        {% block member_editimg  %}
+                        {% endblock %}
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade {% if member_menu == "profile" %}active{% endif %} slideinright" id="profil">
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+
+                        {% block member_edit ''  %}
+
+                        {% block member_profil %}
+                            <div class="card border-danger mb-3 card-full-width" style="background: transparent;-webkit-box-shadow: 1px 2px 7px 0px rgba(211,54,130,1);box-shadow: 1px 2px 7px 0px rgba(211,54,130,1);">
+                                <div class="card-header" style="padding: -0.5rem;color: rgb(216,213,216); font-size: 120%">
+                                    Mes informations
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{ customer.c_salutationName }}{% if customer.c_salutationName %}, <span class="redneon">"{{ customer.c_firstName }} {{ customer.c_lastName }}"</span> {% endif %} </h5>
+                                    <p class="card-text"><span style="font-size:90%;">Membre depuis le {{ customer.c_createdAt|date('j/n/Y') }}</span><br>
+                                        Mon Email : {{ customer.c_email }}<br>
+                                        Mon Téléphone : {{ customer.c_phone }}<br>
+                                        Mon Adressse :<br>
+                                        {{ customer.c_address }} - 2090<br>
+                                        &nbsp;<br>
+                                        Mon anniversaire : {{ customer.c_birhday ? customer.c_birhday|date('Y-m-d') : '' }}</p>
+                                    <p>
+                                        <a href="{{ path('member_edit') }}">
+                                            <button type="button" class="btn btn-outline-info" style="float:right; -webkit-box-shadow: 1px 2px 2px 0px rgba(38, 139, 210, 1);box-shadow: 1px 2px 3px 0px rgba(38, 139, 210, 1);">Modifier mes informations</button></a>
+
+                                        <!-- <button type="button" class="btn btn-outline-info" style="float:right; -webkit-box-shadow: 1px 2px 2px 0px rgba(38, 139, 210, 1);box-shadow: 1px 2px 3px 0px rgba(38, 139, 210, 1);">Changer mon mot de passe</button> -->
+                                    </p>
+                                    <p>
+                                        <a href="{{ path('member_editpw') }}">
+                                            <button type="button" class="btn btn-outline-info" style="float:right; -webkit-box-shadow: 1px 2px 2px 0px rgba(38, 139, 210, 1);box-shadow: 1px 2px 3px 0px rgba(38, 139, 210, 1);">Modifier mote de passe</button></a>
+
+                                        <!-- <button type="button" class="btn btn-outline-info" style="float:right; -webkit-box-shadow: 1px 2px 2px 0px rgba(38, 139, 210, 1);box-shadow: 1px 2px 3px 0px rgba(38, 139, 210, 1);">Changer mon mot de passe</button> -->
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endblock %}
+
+                    </div>
+
+
+                    <div class="col-xs-12 col-md-4" align="center" style="background-color:transparent;">
+                        {#<div id="cardDisplay">
+                            {{ render(controller(
+                                'App\\Controller\\AccountController::cardDisplay',
+                                { 'data': 1 }
+                            )) }}
+                        </div>#}
+                        {% if loyalty_cards %}
+
+                        {% if loyalty_cards.lc_is_valid  == 1 %}
+                                    <div class="card border-warning mb-3" style="max-width: 22rem; width: 18rem; background: transparent;-webkit-box-shadow: 1px 2px 7px 0px rgba(203, 75, 22, 1);box-shadow: 1px 2px 7px 0px rgba(203, 75, 22, 1); float:right; margin-right: 1rem;">
+                                        <div class="card-header" style="text-align: center; padding: -0.5rem;">
+                                            Ma Carte
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><h5 class="card-title">{{ loyalty_cards.lc_card_code }}</h5></h5>
+                                            <p class="card-text"><span style="font-size:90%;">{{ loyalty_cards.lc_loyalty_points }} points de fidélité
+
+
+                                        </div>
+                                        <br>
+                                        <div class="card-qr-code">
+                                            <img src="{{ qr_code_url(qr_code.text) }}" style=vertical-align:middle;"/>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                {% endif %}
+
+
+                        {% else %}
+
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                </div>
+
+
+            </div>
+        </div>
+		
+    </div>
+
+    {% block account_content '' %}
+{% endblock %}

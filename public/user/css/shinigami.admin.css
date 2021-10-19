@@ -1,0 +1,32 @@
+#main > .inner > section {
+    padding-top: 20px;
+}
+
+/* styled table links used in several lists */
+.tlink, .tlink:visited {
+    color: #7f888f;
+    text-decoration: none;
+    border-bottom: none;
+}
+.tlink:hover, .tlink:focus {
+    color: #7f888f !important;
+    text-decoration: none;
+    border-bottom: none;
+}
+.tlink:after {
+    display:block;
+    content: '';
+    border-bottom: solid 1px #f56a6a;
+    transform: scaleX(0);
+    transition: transform 310ms ease-in-out;
+}
+.tlink:hover:after { transform: scaleX(1); }
+
+header > h2 { display: inline-block; }
+header span { float: right; font-size: smaller; margin-top: 0.8em;}
+
+#customer-card-nav h3 {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+}

@@ -1,0 +1,7 @@
+pd_mailer:
+    logger_active: true
+    template_active: true
+    sender_address: "f.mathlouthi8@gmail.com"
+    sender_name: "tuninfoforyou"
+    list_count: "30"
+    active_language: ['tr', 'en']

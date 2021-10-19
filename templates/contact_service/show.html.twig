@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<title>ContactService</title>
+
+{% block body %}
+    <h1>ContactService</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact_service.id }}</td>
+            </tr>
+            <tr>
+                <th>Contact_id</th>
+                <td>{{ contact_service.contactId }}</td>
+            </tr>
+            <tr>
+                <th>Service_id</th>
+                <td>{{ contact_service.serviceId }}</td>
+            </tr>
+            <tr>
+                <th>Sccore</th>
+                <td>{{ contact_service.sccore }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_contact_service_index') }}">back to list</a>
+
+    <a href="{{ path('admin_contact_service_edit', {'id': contact_service.id}) }}">edit</a>
+
+    {{ include('contact_service/_delete_form.html.twig') }}
+{% endblock %}

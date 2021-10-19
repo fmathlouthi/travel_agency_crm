@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Reclamation</title>
+
+{% block body %}
+    <h1>Create new Reclamation</h1>
+
+    {{ include('reclamation/_form.html.twig') }}
+
+    <a href="{{ path('reclamation_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New LoyaltyCardsRequests</title>
+
+{% block body %}
+    <h1>Create new LoyaltyCardsRequests</h1>
+
+    {{ include('loyalty_cards_requests/_form.html.twig') }}
+
+    <a href="{{ path('loyalty_cards_requests_index') }}">back to list</a>
+{% endblock %}

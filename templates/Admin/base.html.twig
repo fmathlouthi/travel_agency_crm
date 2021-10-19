@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {# Meta #}
+    <title>{% block head_title %}{{ parameters('head_title1') }}{% endblock %}</title>
+    <meta name="description" content="{{ parameters('head_description') }}"/>
+    <meta name="keywords" content="{{ parameters('head_keywords1') }}"/>
+    <meta name="author" content="{{ parameters('head_author1') }}"/>
+    <link rel="icon" href="{{ asset('logo.png','admin')}}">
+    {# Assets #}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="{{ asset('vendor.css', 'admin') }}">
+    <link rel="stylesheet" href="{{ asset('app.css', 'admin') }}">
+    <script src="{{ asset('vendor.js', 'admin') }}"></script>
+    <script src="{{ asset('app.js', 'admin') }}"></script>
+    {# Head Block #}
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+    {# JS Language #}
+    <script>
+      const lang = {
+        btn_close: "{{ 'close'|trans }}",
+        btn_yes: "{{ 'yes'|trans }}",
+        search_text: "{{ 'search'|trans }}",
+        search_placeholder: "{{ 'select_item'|trans }}",
+        select_caption: "{{ 'selected'|trans({'%s':'0'}) }}",
+        select_caption_all: "{{ 'selected_all'|trans({'%s': '0'}) }}",
+        select_no_matches: "{{ 'no_matches'|trans({'%s': '0'}) }}",
+        popup_delete_message: "{{ 'delete_message'|trans }}"
+      }
+    </script>
+    <style type="text/css">
+        <!--
+        h1 {font-family:Times New Roman, Times, serif; color:#000FFF; font-size:36pt; text-decoration: underline; font-style: italic; font-weight: bold}
+        -->
+        .container1 th h1 {
+            font-weight: bold;
+            font-size: 1em;
+            text-align: left;
+            color: #185875;
+        }
+
+        .container1 td {
+            font-weight: normal;
+            font-size: 1em;
+            -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+            -moz-box-shadow: 0 2px 2px -2px #0E1119;
+            box-shadow: 0 2px 2px -2px #0E1119;
+        }
+
+        .container1 {
+            text-align: left;
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+            display: table;
+            padding: 0 0 8em 0;
+        }
+
+        .container1 td, .container1 th {
+            padding-bottom: 2%;
+            padding-top: 2%;
+            padding-left:2%;
+        }
+
+        /* Background-color of the odd rows */
+        .container1 tr:nth-child(odd) {
+            background-color: #323C50;
+        }
+
+        /* Background-color of the even rows */
+        .container1 tr:nth-child(even) {
+            background-color: #2C3446;
+        }
+
+        .container1 th {
+            background-color: #1F2739;
+        }
+
+        .container1 td:first-child { color: #FB667A; }
+
+        .container1 tr:hover {
+            background-color: #464A52;
+            -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+            -moz-box-shadow: 0 6px 6px -6px #0E1119;
+            box-shadow: 0 6px 6px -6px #0E1119;
+        }
+
+        .container1 td:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            font-weight: bold;
+
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+
+        @media (max-width: 800px) {
+            .container1 td:nth-child(4),
+            .container1 th:nth-child(4) { display: none; }
+        }
+    </style>
+
+</head>
+<body>
+
+    {# Wrapper #}
+    <section id="wrapper" class="container">
+        {# Left Navigation #}
+        <nav class="left-nav bg-gradient-primary">
+            <div class="logo">
+                <a href="{{ path('admin_dashboard') }}"><img src="{{ asset('logo.png','admin')}}"></a>
+            </div>
+
+            <div id="nav_main">
+                {% block nav_main %}{{ pd_menu_render('App\\Menu\\Navigation\\Main') }}{% endblock %}
+            </div>
+        </nav>
+
+        {# Content Wrapper #}
+        <section class="content-wrapper">
+            {# Header #}
+            <header class="container">
+                <section class="wrap clearfix">
+                    {# Search Form #}
+                    <div id="search" class="float-left">
+                        <h1> TunInfoForYou</h1>
+                    </div>
+
+                    {# Profile Navigation #}
+                    <nav id="nav_action" class="float-right">
+                        {{ pd_menu_render('App\\Menu\\Navigation\\Toolbar', {
+                            'user': app.getUser,
+                            'locale': app.request.locale,
+                            'active_language': parameters('active_language')
+                        }) }}
+                    </nav>
+                </section>
+            </header>
+
+            {# Content #}
+            <section id="content_body">
+                {# Content Title #}
+                <div class="content-title">
+                    <h2>
+                        {% block content_head %}{% endblock %}
+                    </h2>
+                    {# Content Navigation #}
+                    <nav id="content_nav" class="clearfix">
+                        {% block content_nav %}{% endblock %}
+                    </nav>
+                </div>
+
+
+                {# Content Alert #}
+                <div class="content-alerts">
+                    {% for label,message in app.session.flashBag.all %}
+                        {% if label == 'error' %}{% set label = 'danger' %}{% endif %}
+                        {% for msg in message %}
+                            <div class="alert alert-{{ label }}">{{ msg|trans }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
+                {# Content Body #}
+                {% block content_body %}{% endblock %}
+            </section>
+
+            {# Footer #}
+            <footer>
+                <div class="content">
+                    {{ parameters('footer_copyright1')|raw }}
+                </div>
+            </footer>
+        </section>
+
+        <div id="modals"></div>
+    </section>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

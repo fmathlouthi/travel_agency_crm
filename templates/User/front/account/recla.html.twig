@@ -1,0 +1,38 @@
+{% extends 'User/layout_front.html.twig' %}
+
+{# inherits from the main front template - all pages in this dir must inherit from this because of the variable below#}
+{% set active = 'recla' %}
+
+{% block description %}Welecome{% endblock %}
+
+{% block title %}
+    TunInFoForYoU
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Contact Us</h2>
+            <div class="form_update_profil">
+                <h3>Ecrire ton reclamation </h3>
+                <br>
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+                <br><br>
+            </div>   <p>&nbsp;</p>
+        </div>
+
+        <div class="col-md-4">
+            <span style='font-size:150px;'>&#128519;</span>   </div>
+    </div>
+
+
+{% endblock %}

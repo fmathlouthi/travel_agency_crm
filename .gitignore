@@ -1,0 +1,29 @@
+###> PhpUnit ###
+.phpunit
+/phpunit.xml
+###< PhpUnit ###
+
+###> Symfony ###
+/.env.local
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+.web-server-pid
+src/Entity/*~
+src/*/Entity/*~
+src/*/Entity/*/*~
+###< Symfony ###
+
+###> Public ###
+/public/build/*
+!/public/build/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
+###< Public ###
+
+###> Other ###
+node_modules
+.idea
+/build/
+.DS_Store

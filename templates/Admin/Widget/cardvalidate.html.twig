@@ -1,0 +1,38 @@
+<div class="widget box-3 box-col-3 widget_{{ widget.id }}" data-order="{{ path('widget_order', {'widgetId': widget.id, 'order': '0'}) }}">
+    <div class="card">
+        <div class="card-body p-0">
+            {% embed '@PdWidget/widgetAction.html.twig' %}{% endembed %}
+
+            <div class="cader_grey">
+                <h4>Carte de fidélité</h4>
+                <h3>Demandes</h3>
+                {% if widget.data.card_request|length > 0 %}
+                    <table border="1">
+                        <tr>
+                            <th>Date</th>
+                            <th>Nom</th>
+                            <th> Action</th>
+                            <th> action</th>
+                        </tr>
+                        {% for request in widget.data.card_request %}
+                            <tr>
+                                <td width="60">{{ request.lcr_date_of_request ? request.lcr_date_of_request|date('Y-m-d') : '' }}</td>
+                                <td width="200"><a href="" class="dsh_link">{{ request.c_firstName }} {{ request.c_lastName }}</a></td>
+
+                                <td width="40"><a href="{{ path("admin_card_validate", {"id":request.lcr_id }) }}" class="btn_actions">Valider</a></td>
+                                <td width="40"><a href="{{ path("admin_card_refuse", {"id":request.lcr_id }) }}" class="btn_actions">Refuser</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    Aucune nouvelle demande de carte de fidelité.
+                {% endif %}
+
+
+            </div></div>
+
+
+
+                   </div>
+    </div>
+</div>
